@@ -4,6 +4,13 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    #if current_user.admin?
+
+      @courses = Course.all
+      @check_user = current_user.admin
+    #end
+  end
+  def register
     @courses = Course.all
   end
 

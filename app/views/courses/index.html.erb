@@ -24,9 +24,13 @@
         <td><%= course.name %></td>
         <td><%= course.description %></td>
         <td><%= course.credit %></td>
+        <% if @check_user == true %>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+        <td><%= check_box_tag 'courses[course_id]', course.id,  %></td>
+        <% end  %>
       </tr>
     <% end %>
   </tbody>
@@ -34,8 +38,14 @@
 </div>
 
 <br>
+  <% if @check_user == true %>
+      <div class="col-md-12 text-center">
+        <%= link_to 'Create New Course', new_course_path, class: 'btn btn-default ' %>
+  <% else %>
+      <div class="col-md-12 text-center">
+        <%= link_to 'Register Courses', class: 'btn btn-default '%>
+      </div>
+  <% end %>
+     </div>
 
-<div class="col-md-12 text-center">
-<%= link_to 'Create New Course', new_course_path, class: 'btn btn-default ' %>
-</div>
 </div>
