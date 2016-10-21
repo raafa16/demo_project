@@ -1,0 +1,10 @@
+<dataSource name="MySQL - @localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="information_schema">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="mysql" />
+    <schema id="3" name="performance_schema" />
+    <schema id="4" name="sys" />
+  </database-model>
+</dataSource>
