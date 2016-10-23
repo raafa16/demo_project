@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
- # match 'courses/register', to: 'courses#register', :via => 'get'
-  resources :courses
+ match 'courses/register', to: 'courses#register', :via => 'post'
+  match 'courses/drop', to: 'courses#drop', :via => 'post'
+  resources :courses do
+    collection do
+      get :confirmed_registration
+    end
+  end
+
+
+
+
 
 
 

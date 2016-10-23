@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :drop]
 
   # GET /courses
   # GET /courses.json
@@ -10,9 +10,45 @@ class CoursesController < ApplicationController
       @check_user = current_user.admin
     #end
   end
+
   def register
-    @courses = Course.all
+    #@selected_courses = params[:courses][:course_ids]||=[]
+    #puts @selected_courses
+
+    #course = params[:courses]
+    #@selected_courses = course[:course_id]
+    @selected_courses = params[:course_ids]
+    @registered_courses = Course.find(params[:course_ids])
+    puts @registered_courses
+    #puts @selected_courses
+    @selected_courses.each do |c|
+      puts '::::::::::::::::::::'
+      puts c
+       #s = Course.find(c)
+      #puts s.inspect
+
+    end
+    @selected_courses.each do |course|
+      current_user.courses << Course.find(course)
+      #current_user.save!
+
+
+    end
+    redirect_to confirmed_registration_courses_path
   end
+  def confirmed_registration
+
+  end
+
+  def drop
+    user.courses
+    puts current_user.courses
+    respond_to do |format|
+      format.html { redirect_to confirmed_registration_courses_path, notice: 'Course was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
 
   # GET /courses/1
   # GET /courses/1.json
