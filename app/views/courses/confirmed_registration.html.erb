@@ -6,7 +6,7 @@
       <h1 class="text-center">Courses</h1>
     </div>
   </div>
-  <%= form_tag({:action => 'drop'}) do %>
+
   <div class="container">
     <table class="table table-hover">
       <thead>
@@ -29,7 +29,7 @@
             <td><%#= link_to 'Show', course %></td>
             <td><%#= link_to 'Edit', edit_course_path(course) %></td>
             <td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <td><%= submit_tag 'Drop', class:'btn btn-default' %></td>
+            <td><%= link_to 'Drop',  drop_courses_path(course_id: course.id), class:'btn btn-default' %></td>
           </tr>
       <% end %>
 
@@ -40,7 +40,6 @@
       </tbody>
     </table>
   </div>
-  <% end %>
   <br>
   <% if @check_user == true %>
       <div class="col-md-12 text-center">

@@ -40,7 +40,8 @@
       </tr>
     <% end %>
       <div class="col-md-12 text-center">
-        <%= submit_tag "Register Courses" , class:'btn btn-default'%>
+        <%= submit_tag "Register Courses" , class:'btn btn-default pull-right'%>
+        <%= link_to "Registered Courses", confirmed_registration_courses_path, class:'btn btn-default'%>
       </div>
 
   <% end %>

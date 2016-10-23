@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :drop]
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json
@@ -29,7 +29,12 @@ class CoursesController < ApplicationController
 
     end
     @selected_courses.each do |course|
-      current_user.courses << Course.find(course)
+      if current_user.courses.exists? (course)
+
+      else
+        current_user.courses << Course.find(course)
+      end
+
       #current_user.save!
 
 
@@ -41,12 +46,16 @@ class CoursesController < ApplicationController
   end
 
   def drop
+    @course = params[:course_id]
+    puts @course
+    redirect_to confirmed_registration_courses_path
+=begin
     user.courses
     puts current_user.courses
     respond_to do |format|
       format.html { redirect_to confirmed_registration_courses_path, notice: 'Course was successfully destroyed.' }
       format.json { head :no_content }
-    end
+=end
   end
 
 
