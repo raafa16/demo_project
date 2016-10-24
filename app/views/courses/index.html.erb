@@ -8,6 +8,7 @@
 </div>
 
 <div class="container">
+  <%= form_tag({:action => 'register'}) do %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -19,7 +20,7 @@
   </thead>
 
   <tbody>
-  <%= form_tag({:action => 'register'}) do %>
+
     <% @courses.each do |course| %>
       <tr>
         <td><%= course.name %></td>
@@ -44,9 +45,10 @@
         <%= link_to "Registered Courses", confirmed_registration_courses_path, class:'btn btn-default'%>
       </div>
 
-  <% end %>
+
   </tbody>
 </table>
+  <% end %>
 </div>
 
 <br>

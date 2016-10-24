@@ -47,7 +47,9 @@ class CoursesController < ApplicationController
 
   def drop
     @course = params[:course_id]
-    puts @course
+    if current_user.courses.find(@course)
+     current_user.courses.delete(@course)
+     end
     redirect_to confirmed_registration_courses_path
 =begin
     user.courses
