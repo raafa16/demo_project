@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
     #if current_user.admin?
 
       @courses = Course.all
+      @current_semester = Semester.find_by_active(1)
+      @current_semester_courses = @current_semester.courses
       @check_user = current_user.admin
       @current_semester = Semester.find_by_active(1)
     #end
@@ -80,10 +82,11 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @current_semester = Semester.find_by_active(1)
 
     respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+      if @course.save && @current_semester.courses << @course
+      format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }

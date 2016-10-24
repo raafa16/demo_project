@@ -4,6 +4,8 @@ class Course < ApplicationRecord
   validates :credit, numericality: {only_integer: true}
  # validates :credit_between_1_and_3, on: :create
   has_and_belongs_to_many :users
+  has_and_belongs_to_many :semesters
+
 
       def credit_between_1_and_3
         if credit<1||credit>3
