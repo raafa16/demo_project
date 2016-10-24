@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   devise_for :users
  match 'courses/register', to: 'courses#register', :via => 'post'
   #match 'courses/drop', to: 'courses#drop', :via => 'post'
