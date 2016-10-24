@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
 
       @courses = Course.all
       @check_user = current_user.admin
+      @current_semester = Semester.find_by_active(1)
     #end
   end
 

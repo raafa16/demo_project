@@ -1,34 +1,35 @@
 <div class="container">
     <div class="jumbotron">
-      <h1> User Profile</h1>
-      </div>
-<div class="row profile">
-  <div class="col-sm-4 col-md-3">
-    <%= image_tag(@user.avatar.url(:small), class: 'avatar') %>
-    <h1><%= @user.first_name %></h1>
-    <ul>
-      <%= content_tag(:li, ("First Name: " + @user.first_name)) unless @user.first_name.blank? %>
-      <%= content_tag(:li, ("Last Name: " + @user.last_name)) unless @user.last_name.blank? %>
-      <%= content_tag(:li, ("Email: " + @user.email)) unless @user.email.blank? %>
-    </ul>
-  </div>
-  <div class="feed">
-    <table class="table table-hover">
-    <h3>Course List</h3>
-    <% @courses.each do |course| %>
-        <table class="table table-hover">
-        <tr>
-          <td><%= course.name %></td>
-          <td><%= course.description %></td>
-          <td><%= course.credit %></td>
-        </tr>
-
-    <% end %>
-      </table>
-  </div>
-</div>
+      <h1>User Profile</h1>
     </div>
 
+<div class="container">
+      <div class="row profile">
+        <div class="col-sm-4 col-md-3">
+          <%= image_tag(@user.avatar.url(:small), class: 'avatar') %>
+          <h1><%= @user.first_name %></h1>
+          <ul>
+            <%= content_tag(:li, ("First Name: " + @user.first_name)) unless @user.first_name.blank? %>
+            <%= content_tag(:li, ("Last Name: " + @user.last_name)) unless @user.last_name.blank? %>
+            <%= content_tag(:li, ("Email: " + @user.email)) unless @user.email.blank? %>
+          </ul>
+        </div>
+        <div class="feed">
+          <table class="table table-hover">
+            <h3>Course List</h3>
+            <% @courses.each do |course| %>
+                <tr>
+                  <td><%= course.name %></td>
+                  <td><%= course.description %></td>
+                  <td><%= course.credit %></td>
+                </tr>
 
+            <% end %>
+          </table>
+        </div>
+      </div>
+
+</div>
+</div>
 
 

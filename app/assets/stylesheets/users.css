@@ -25,7 +25,9 @@
     padding:  0;
     margin:  0 0 10px 0;
     width:98%;
-img { width: 100%; }
+        img
+            { width: 100%;
+            }
 }
 
 
