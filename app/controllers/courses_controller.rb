@@ -78,6 +78,13 @@ class CoursesController < ApplicationController
 =end
   end
 
+  def search
+    Rails.logger.info params.inspect
+    @user = current_user
+    @courses = @user.courses.where('courses_users.semester_id = ?', params[:semester_id])
+    render json: @courses
+  end
+
 
   # GET /courses/1
   # GET /courses/1.json

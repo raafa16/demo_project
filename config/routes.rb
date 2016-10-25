@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       get :confirmed_registration
       get :drop
       get :publish_grade
-
+      post :search
     end
 
 
