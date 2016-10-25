@@ -4,7 +4,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_and_belongs_to_many :courses
+  has_many :courses_users
+  has_many :courses, :through => :courses_users
 
   mount_uploader :avatar, AvatarUploader
   belongs_to :semester
@@ -14,7 +15,7 @@ class User < ApplicationRecord
   validates_processing_of :avatar
 
   private
-  def avatar_size_valdiation
+  def avatar_size_validation
     errors[:avatar]<< 'Should be less than 500kb' if avatar.size >0.5.megabytes
   end
 

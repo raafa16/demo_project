@@ -10,7 +10,8 @@ class CoursesController < ApplicationController
       @current_semester = Semester.find_by_active(1)
       @current_semester_courses = @current_semester.courses
       @check_user = current_user.admin
-      @current_semester = Semester.find_by_active(1)
+      @semesters = Semester.all
+
     #end
   end
 
@@ -36,8 +37,9 @@ class CoursesController < ApplicationController
       if current_user.courses.exists? (course)
 
       else
-        current_user.courses << Course.find(course)
+        #current_user.courses << Course.find(course)
         User.update(current_user.id, semester_id: @current_semester.id)
+        current_user.courses_users.create(:semester_id => @current_semester.id, :course_id => Course.find(course).id, :user_id => current_user.id)
       end
 
       #current_user.save!
@@ -87,12 +89,26 @@ class CoursesController < ApplicationController
     @current_semester = Semester.find_by_active(1)
 
     respond_to do |format|
-      if @course.save && @current_semester.courses << @course
-      format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
+      if Course.where(:name => @course.name).blank?
+        puts 'Course doest not exist'
+        if @course.save && @current_semester.courses << @course
+          format.html { redirect_to @course, notice: 'Course was successfully created.' }
+          format.json { render :show, status: :created, location: @course }
+        else
+          format.html { render :new }
+          format.json { render json: @course.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        puts @course.name
+        puts 'Course exists'
+        @existing_course = Course.find_by_name(@course.name)
+        if @current_semester.courses << @existing_course
+          format.html { redirect_to @course, notice: 'Course was successfully created.' }
+          format.json { render :show, status: :created, location: @course }
+        else
+          format.html { render :new }
+          format.json { render json: @course.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

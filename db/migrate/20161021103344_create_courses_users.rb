@@ -3,6 +3,8 @@ class CreateCoursesUsers < ActiveRecord::Migration[5.0]
     create_table :courses_users do |t|
       t.integer :course_id
       t.integer :user_id
+      t.integer :semester_id
+      t.string :grade
 
       t.timestamps
     end

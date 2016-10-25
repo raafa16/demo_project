@@ -12,9 +12,9 @@
     <table id="8" parent="1" name="courses" />
     <table id="9" parent="1" name="schema_migrations" />
     <table id="10" parent="1" name="users" />
-    <table id="11" parent="1" name="courses_users" />
-    <table id="12" parent="1" name="semesters" />
-    <table id="13" parent="1" name="courses_semesters" />
+    <table id="11" parent="1" name="courses_semesters" />
+    <table id="12" parent="1" name="courses_users" />
+    <table id="13" parent="1" name="semesters" />
     <column id="14" parent="7" name="key">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
@@ -175,7 +175,7 @@
     <column id="55" parent="11" name="course_id">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="56" parent="11" name="user_id">
+    <column id="56" parent="11" name="semester_id">
       <data-type>int(11)|0</data-type>
     </column>
     <column id="57" parent="11" name="created_at">
@@ -186,9 +186,9 @@
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <index id="59" parent="11" name="index_courses_users_on_course_id_and_user_id">
+    <index id="59" parent="11" name="index_courses_semesters_on_course_id_and_semester_id">
       <columns>course_id
-user_id</columns>
+semester_id</columns>
       <desc-columns />
     </index>
     <key id="60" parent="11" name="PRIMARY">
@@ -200,52 +200,58 @@ user_id</columns>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="62" parent="12" name="name">
-      <data-type>varchar(255)|0</data-type>
-    </column>
-    <column id="63" parent="12" name="year">
+    <column id="62" parent="12" name="course_id">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="64" parent="12" name="active">
-      <data-type>tinyint(1)|0</data-type>
+    <column id="63" parent="12" name="user_id">
+      <data-type>int(11)|0</data-type>
     </column>
-    <column id="65" parent="12" name="created_at">
+    <column id="64" parent="12" name="semester_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="65" parent="12" name="grade">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="66" parent="12" name="created_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <column id="66" parent="12" name="updated_at">
+    <column id="67" parent="12" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <key id="67" parent="12" name="PRIMARY">
+    <index id="68" parent="12" name="index_courses_users_on_course_id_and_user_id">
+      <columns>course_id
+user_id</columns>
+      <desc-columns />
+    </index>
+    <key id="69" parent="12" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="68" parent="13" name="id">
+    <column id="70" parent="13" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="69" parent="13" name="course_id">
+    <column id="71" parent="13" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="72" parent="13" name="year">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="70" parent="13" name="semester_id">
-      <data-type>int(11)|0</data-type>
+    <column id="73" parent="13" name="active">
+      <data-type>tinyint(1)|0</data-type>
     </column>
-    <column id="71" parent="13" name="created_at">
+    <column id="74" parent="13" name="created_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <column id="72" parent="13" name="updated_at">
+    <column id="75" parent="13" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <index id="73" parent="13" name="index_courses_semesters_on_course_id_and_semester_id">
-      <columns>course_id
-semester_id</columns>
-      <desc-columns />
-    </index>
-    <key id="74" parent="13" name="PRIMARY">
+    <key id="76" parent="13" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>

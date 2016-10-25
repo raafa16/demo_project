@@ -6,6 +6,9 @@
     <h1 class="text-center">Courses</h1>
   </div>
 </div>
+    <div class="container">
+    <%= select_tag :semester_id, options_for_select(@semesters.all.collect{|u| ["#{u.name}" "#{u.year}"]}), prompt: "List Registered courses for:" %>
+    </div>
 
 <div class="container">
   <% if @current_semester.blank? == true %>

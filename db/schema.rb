@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20161025043155) do
   create_table "courses_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "course_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "semester_id"
+    t.string   "grade"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["course_id", "user_id"], name: "index_courses_users_on_course_id_and_user_id", using: :btree
   end
 
