@@ -129,107 +129,123 @@
     <column id="44" parent="10" name="avatar">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <index id="45" parent="10" name="index_users_on_email">
+    <column id="45" parent="10" name="semester_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="46" parent="10" name="cgpa">
+      <data-type>decimal(5,2)|0</data-type>
+    </column>
+    <index id="47" parent="10" name="index_users_on_email">
       <columns>email</columns>
       <desc-columns />
       <unique>1</unique>
     </index>
-    <index id="46" parent="10" name="index_users_on_reset_password_token">
+    <index id="48" parent="10" name="index_users_on_reset_password_token">
       <columns>reset_password_token</columns>
       <desc-columns />
       <unique>1</unique>
     </index>
-    <key id="47" parent="10" name="PRIMARY">
+    <index id="49" parent="10" name="index_users_on_semester_id">
+      <columns>semester_id</columns>
+      <desc-columns />
+    </index>
+    <key id="50" parent="10" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <key id="48" parent="10" name="index_users_on_email">
+    <key id="51" parent="10" name="index_users_on_email">
       <columns>email</columns>
       <underlying-index>index_users_on_email</underlying-index>
     </key>
-    <key id="49" parent="10" name="index_users_on_reset_password_token">
+    <key id="52" parent="10" name="index_users_on_reset_password_token">
       <columns>reset_password_token</columns>
       <underlying-index>index_users_on_reset_password_token</underlying-index>
     </key>
-    <column id="50" parent="11" name="id">
+    <foreign-key id="53" parent="10" name="fk_rails_26b4af8b3b">
+      <columns>semester_id</columns>
+      <ref-key>~.semesters.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="54" parent="11" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="51" parent="11" name="course_id">
+    <column id="55" parent="11" name="course_id">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="52" parent="11" name="user_id">
+    <column id="56" parent="11" name="user_id">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="53" parent="11" name="created_at">
+    <column id="57" parent="11" name="created_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <column id="54" parent="11" name="updated_at">
+    <column id="58" parent="11" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <index id="55" parent="11" name="index_courses_users_on_course_id_and_user_id">
+    <index id="59" parent="11" name="index_courses_users_on_course_id_and_user_id">
       <columns>course_id
 user_id</columns>
       <desc-columns />
     </index>
-    <key id="56" parent="11" name="PRIMARY">
+    <key id="60" parent="11" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="57" parent="12" name="id">
+    <column id="61" parent="12" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="58" parent="12" name="name">
+    <column id="62" parent="12" name="name">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="59" parent="12" name="year">
+    <column id="63" parent="12" name="year">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="60" parent="12" name="active">
+    <column id="64" parent="12" name="active">
       <data-type>tinyint(1)|0</data-type>
     </column>
-    <column id="61" parent="12" name="created_at">
+    <column id="65" parent="12" name="created_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <column id="62" parent="12" name="updated_at">
+    <column id="66" parent="12" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <key id="63" parent="12" name="PRIMARY">
+    <key id="67" parent="12" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="64" parent="13" name="id">
+    <column id="68" parent="13" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="65" parent="13" name="course_id">
+    <column id="69" parent="13" name="course_id">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="66" parent="13" name="semester_id">
+    <column id="70" parent="13" name="semester_id">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="67" parent="13" name="created_at">
+    <column id="71" parent="13" name="created_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <column id="68" parent="13" name="updated_at">
+    <column id="72" parent="13" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <index id="69" parent="13" name="index_courses_semesters_on_course_id_and_semester_id">
+    <index id="73" parent="13" name="index_courses_semesters_on_course_id_and_semester_id">
       <columns>course_id
 semester_id</columns>
       <desc-columns />
     </index>
-    <key id="70" parent="13" name="PRIMARY">
+    <key id="74" parent="13" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>

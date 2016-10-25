@@ -4,6 +4,7 @@ class Semester < ApplicationRecord
   before_create :inactivate_semester
 
   has_and_belongs_to_many :courses
+  has_many :users
 
   private
   def inactivate_semester

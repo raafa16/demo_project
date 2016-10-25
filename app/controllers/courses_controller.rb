@@ -22,6 +22,7 @@ class CoursesController < ApplicationController
     #@selected_courses = course[:course_id]
     @selected_courses = params[:course_ids]
     @registered_courses = Course.find(params[:course_ids])
+    @current_semester = Semester.find_by_active(1)
     puts @registered_courses
     #puts @selected_courses
     @selected_courses.each do |c|
@@ -36,6 +37,7 @@ class CoursesController < ApplicationController
 
       else
         current_user.courses << Course.find(course)
+        User.update(current_user.id, semester_id: @current_semester.id)
       end
 
       #current_user.save!

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :courses
 
   mount_uploader :avatar, AvatarUploader
+  belongs_to :semester
 
   #User Avatar Validation
   validates_integrity_of :avatar
