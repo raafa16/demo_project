@@ -1,0 +1,66 @@
+<div class="container">
+
+
+  <div>
+    <div class="jumbotron">
+      <h1 class="text-center">Courses</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <% if @current_semester.blank? == true %>
+        <h2>No semester marked as active.</h2>
+    <%else %>
+        <h2>Current Semester: <%=@current_semester.name %> <%= @current_semester.year  %></h2>
+    <% end %>
+    <%= form_tag({:action => 'publish_grade'}) do %>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th class="text-center">Student Name</th>
+            <th class="text-center">Course Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Credit</th>
+            <th colspan="3"></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @user_from_current_semesters.each do |user| %>
+          <tr>
+            <td class="text-center"><%= user.first_name %></td>
+            </tr>
+          <% user.courses.each do |course| %>
+          <tr>
+                <td class="text-center"></td>
+                <td class="text-center"><%= course.name %></td>
+                <td class="text-center"><%= course.description %></td>
+                <td class="text-center"><%= course.credit %></td>
+                <td>
+                  <select>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+                </td>
+              </tr>
+              <% end  %>
+          <% end  %>
+          <% if @check_user== true %>
+              <div class="col-md-12 text-center">
+                <%= submit_tag "Publish Grade" , class:'btn btn-default pull-right'%>
+              </div>
+          <% else %>
+
+          <% end %>
+
+          </tbody>
+        </table>
+    <% end %>
+  </div>
+
+  <br>
+  </div>
+
+</div>

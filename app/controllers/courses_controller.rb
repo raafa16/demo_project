@@ -52,6 +52,17 @@ class CoursesController < ApplicationController
 
   end
 
+  def publish_grade
+    if current_user.admin
+      #@registered_courses = Course.find(params[:course_ids])
+      @current_semester = Semester.find_by_active(1)
+      @check_user = current_user.admin
+      @user_from_current_semesters = User.where(semester_id: @current_semester.id)
+      puts @user_from_current_semesters
+    end
+
+  end
+
   def drop
     @course = params[:course_id]
     if current_user.courses.find(@course)

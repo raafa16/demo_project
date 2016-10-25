@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
  match 'courses/register', to: 'courses#register', :via => 'post'
+  #match 'courses/publish_grade', to: 'courses#publish_grade', :via => 'post'
   #match 'courses/drop', to: 'courses#drop', :via => 'post'
 
 
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get :confirmed_registration
       get :drop
+      get :publish_grade
 
     end
 
