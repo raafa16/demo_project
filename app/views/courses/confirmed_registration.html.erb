@@ -20,22 +20,24 @@
 
       <tbody>
 
-      <% current_user.courses.each do |course| %>
+      <% @courses.each do |course| %>
           <tr>
             <td><%= course.name %></td>
             <td><%= course.description %></td>
             <td><%= course.credit %></td>
-
-            <td><%#= link_to 'Show', course %></td>
-            <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-            <td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <td><%= link_to 'Drop',  drop_courses_path(course_id: course.id), class:'btn btn-default' %></td>
           </tr>
       <% end %>
 
       <div class="col-md-12 text-center">
-        <%#= submit_tag "Register Courses" , class:'btn btn-default'%>
-        <%= button_tag "You have added these course(s)." , class:'btn btn-success'%>
+        <h3>You have registered these courses successfully!</h3>
+        <div>
+          <% if @current_semester.blank? == true %>
+              <h2>No semester marked as active.</h2>
+          <%else %>
+              <h2>Current Semester: <%=@current_semester.name %> <%= @current_semester.year  %></h2>
+          <% end %>
+        </div>
       </div>
       </tbody>
     </table>
@@ -46,11 +48,8 @@
         <%= link_to 'Create New Course', new_course_path, class: 'btn btn-default ' %>
   <% else %>
       <div class="col-md-12 text-center">
-        <%#= link_to'Register Courses', class: 'btn btn-default '%>
+        <%= link_to'Take more courses', courses_path, class: 'btn btn-default '%>
       </div>
   <% end %>
-  </div>
-  <div class="col-md-12 text-center">
-    <%= link_to'Take more courses', courses_path, class: 'btn btn-default '%>
   </div>
 </div>

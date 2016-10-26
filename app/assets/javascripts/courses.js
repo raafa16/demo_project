@@ -11,7 +11,7 @@ $(document).ready(function () {
             var html = ''
             $.each(res, function(index, elm){
                 console.log(elm);
-                html += '<h3>Name: '+ elm['name'] +', Credit: '+ elm['credit'] +' </h3>'
+                html += '<h3>Course Name: '+ elm['name'] +', Credit: '+ elm['credit'] +' </h3>'
             });
             $('#result-div').html(html);
         }).error(function(err){

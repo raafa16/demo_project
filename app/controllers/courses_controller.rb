@@ -49,7 +49,8 @@ class CoursesController < ApplicationController
     redirect_to confirmed_registration_courses_path
   end
   def confirmed_registration
-
+    @current_semester = Semester.find_by_active(1)
+    @courses = current_user.courses.where('courses_users.semester_id = ?', @current_semester.id)
   end
 
   def publish_grade
