@@ -13,7 +13,7 @@
     <%else %>
         <h2>Current Semester: <%=@current_semester.name %> <%= @current_semester.year  %></h2>
     <% end %>
-    <%= form_tag({:action => 'publish_grade'}) do %>
+    <%= form_tag({:action => 'confirmed_grade_submission'}) do %>
         <table class="table table-hover">
           <thead>
           <tr>
@@ -27,26 +27,23 @@
 
           <tbody>
           <% @user_from_current_semesters.each do |user| %>
-          <tr>
-            <td class="text-center"><%= user.first_name %></td>
-            </tr>
-          <% user.courses.each do |course| %>
-          <tr>
-                <td class="text-center"></td>
-                <td class="text-center"><%= course.name %></td>
-                <td class="text-center"><%= course.description %></td>
-                <td class="text-center"><%= course.credit %></td>
-                <td>
-                  <select>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
-                </select>
-                </td>
+            <tr>
+              <td class="text-center"><%= user.first_name %></td>
               </tr>
-              <% end  %>
+            <% user.courses.where('courses_users.semester_id = ?', @current_semester.id).each do |course| %>
+                <tr>
+                  <td class="text-center"></td>
+                  <td class="text-center"><%= course.name %></td>
+                  <td class="text-center"><%= course.description %></td>
+                  <td class="text-center"><%= course.credit %></td>
+                  <td>
+                    <%= select_tag "grade[user_id][#{user.id}][sem_id][#{@current_semester.id}][course_id][#{course.id}][grade]", options_for_select(%w(A B C D F), 'A'), class: 'grade-select form_input'%>
+                  </td>
+                </tr>
+            <% end  %>
+
           <% end  %>
+
           <% if @check_user== true %>
               <div class="col-md-12 text-center">
                 <%= submit_tag "Publish Grade" , class:'btn btn-default pull-right'%>

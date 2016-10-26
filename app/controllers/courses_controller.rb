@@ -57,6 +57,7 @@ class CoursesController < ApplicationController
     if current_user.admin
       #@registered_courses = Course.find(params[:course_ids])
       @current_semester = Semester.find_by_active(1)
+      puts @current_semester.name
       @check_user = current_user.admin
       @user_from_current_semesters = User.where(semester_id: @current_semester.id)
       puts @user_from_current_semesters
@@ -84,6 +85,33 @@ class CoursesController < ApplicationController
     @user = current_user
     @courses = @user.courses.where('courses_users.semester_id = ?', params[:semester_id])
     render json: @courses
+  end
+
+  def confirmed_grade_submission
+    @info = params["grade"]
+
+    puts "Suppose to print user ids from hash:"
+    @info.each do |k,v|
+      v.each do |f,g|
+        @user = User.find_by_id(f)
+        puts "User ID = #{f} is enrolled in:"
+        g.each do |i,j|
+          j.each do |k,l|
+            puts "Semester id=#{k} and took"
+            l.each do |m,n|
+              n.each do |p,q|
+                puts "Course=#{p} and got"
+                q.each do |s,t|
+                  puts "Grade: #{t}"
+                  @user.courses_users.where('semester_id=? AND course_id=?',k,p ).update_all(:grade => t)
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
   end
 
 
