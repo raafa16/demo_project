@@ -18,5 +18,11 @@ $(document).ready(function () {
             console.log(err);
         })
     });
+
+    dataConfirmModal.setDefaults({
+        title: 'Are your sure you want to delete this course?',
+        commit: 'Yes',
+        cancel: 'No'
+    });
 });
 
