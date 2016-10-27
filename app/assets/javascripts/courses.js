@@ -11,7 +11,7 @@ $(document).ready(function () {
             var html = ''
             $.each(res, function(index, elm){
                 console.log(elm);
-                html += '<h3>Course Name: '+ elm['name'] +', Credit: '+ elm['credit'] +' </h3>'
+                html += '<h4>Course Name: '+ elm[0] +', Credit: '+ elm[1] +',Credit: '+elm[2] + ',Grade: '+elm[3] + ' </h4>'
             });
             $('#result-div').html(html);
         }).error(function(err){
@@ -19,3 +19,4 @@ $(document).ready(function () {
         })
     });
 });
+

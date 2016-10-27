@@ -40,27 +40,23 @@
         <td><%= course.description %></td>
         <td><%= course.credit %></td>
         <% if @check_user == true %>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', course, class:'btn btn-default' %></td>
+          <td><%= link_to 'Edit', edit_course_path(course), class:'btn btn-default' %></td>
+          <td><%= link_to 'Delete', course, class:'btn btn-default', method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
-
-                <td><%#= check_box_tag 'courses[course_id][]', course.id %></td>
-            <td><%= check_box_tag 'course_ids[]', course.id %></td>
-
-
-
+          <td><%= check_box_tag 'course_ids[]', course.id %></td>
         <% end  %>
       </tr>
     <% end %>
     <% if @check_user== true %>
-
+          <div class="col-md-12 text-center">
+            <%= link_to 'Create New Course', new_course_path, class: 'btn btn-default pull-right' %>
+          </div>
     <% else %>
       <div class="col-md-12 text-center">
         <%= submit_tag "Register Courses" , class:'btn btn-default pull-right'%>
-        <%= link_to "Registered Courses", confirmed_registration_courses_path, class:'btn btn-default'%>
       </div>
-  <% end %>
+   <% end %>
 
 
   </tbody>
@@ -69,14 +65,5 @@
 </div>
 
 <br>
-  <% if @check_user == true %>
-      <div class="col-md-12 text-center">
-        <%= link_to 'Create New Course', new_course_path, class: 'btn btn-default ' %>
-  <% else %>
-      <div class="col-md-12 text-center">
-        <%#= link_to'Register Courses', class: 'btn btn-default '%>
-      </div>
-  <% end %>
-     </div>
 
 </div>

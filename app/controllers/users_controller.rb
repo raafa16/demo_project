@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @registered_courses = current_user.courses_users.pluck(:course_id)
     @enrolled_semesters = current_user .courses_users.pluck(:semester_id)
-  @total_credit = 0
+    @total_credit = 0
     @total_credit_earned =0
     @courses = Course.find(@registered_courses)
     @semesters= Semester.find(@enrolled_semesters)
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
          @credit_earned = @credit.to_i*0
          @total_credit = @total_credit + @credit
        elsif @grade === "nil"
-
+         @credit_earned = 0
        end
        @total_credit_earned = @total_credit_earned.to_i + @credit_earned.to_i
 

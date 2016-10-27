@@ -84,7 +84,17 @@ class CoursesController < ApplicationController
     Rails.logger.info params.inspect
     @user = current_user
     @courses = @user.courses.where('courses_users.semester_id = ?', params[:semester_id])
-    render json: @courses
+    @grades = Hash.new{ |hash, key| hash[key] =[]}
+
+    @courses.each do |course|
+      @grade = current_user.courses_users.where('course_id=?', course.id).pluck(:grade)[0]
+      @grades[course.id].push course.name
+      @grades[course.id].push course.description
+      @grades[course.id].push course.credit
+      @grades[course.id].push @grade
+    end
+
+    render json: @grades
   end
 
   def confirmed_grade_submission

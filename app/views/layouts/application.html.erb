@@ -14,6 +14,7 @@
         Logged in as <strong><%= current_user.email %></strong>.
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
         <%= link_to 'My profile', users_show_path, :class => 'navbar-link' %>
+        <%= link_to 'Registered Courses', confirmed_registration_courses_path, :class => 'navbar-link' %>
         <%= link_to 'Course Registration', courses_url, :class => 'navbar-link' %>
         <% if current_user.admin %>
         <%= link_to 'Semester', semesters_url, :class => 'navbar-link' %>

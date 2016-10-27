@@ -7,6 +7,8 @@
     </div>
   </div>
 
+
+
   <div class="container">
     <table class="table table-hover">
       <thead>
@@ -39,17 +41,18 @@
           <% end %>
         </div>
       </div>
+      <% if @check_user == true %>
+          <div class="col-md-12 text-center">
+            <%= link_to 'Create New Course', new_course_path, class: 'btn btn-default pull-right' %>
+          </div>
+      <% else %>
+          <div class="col-md-12 text-center">
+            <%= link_to'Add Course', courses_path, class: 'btn btn-default pull-right'%>
+          </div>
+      <% end %>
       </tbody>
     </table>
   </div>
   <br>
-  <% if @check_user == true %>
-      <div class="col-md-12 text-center">
-        <%= link_to 'Create New Course', new_course_path, class: 'btn btn-default ' %>
-  <% else %>
-      <div class="col-md-12 text-center">
-        <%= link_to'Take more courses', courses_path, class: 'btn btn-default '%>
-      </div>
-  <% end %>
   </div>
 </div>
