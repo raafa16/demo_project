@@ -33,7 +33,12 @@
           <%else%>
                 <li><%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
           <%end%>
-          <li><%= link_to 'Registered Courses', confirmed_registration_courses_path, :class => 'navbar-link' %></li>
+          <% if current_page?('/courses/confirmed_registration') %>
+              <li class="active"><%= link_to 'Registered Courses', confirmed_registration_courses_path, :class => 'navbar-link' %></li>
+          <%else%>
+              <li><%= link_to 'Registered Courses', confirmed_registration_courses_path, :class => 'navbar-link' %></li>
+          <%end%>
+
           <% if current_page?( '/courses') %>
               <li class="active"><%= link_to 'Course Registration', courses_url, :class => 'navbar-link' %></li>
           <%else%>
@@ -44,7 +49,7 @@
                 <li class="active"><%= link_to 'Semester', semesters_url, :class => 'navbar-link' %></li>
             <%else%>
                 <li><%= link_to 'Semester', semesters_url, :class => 'navbar-link' %></li>
-            <%end%><
+            <%end%>
             <% if current_page?( '/courses/publish_grade') %>
               <li class="active"><%= link_to 'Publish Grade',  publish_grade_courses_url, :class => 'navbar-link' %></li>
             <%else%>
