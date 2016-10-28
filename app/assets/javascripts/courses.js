@@ -11,7 +11,29 @@ $(document).ready(function () {
             var html = ''
             $.each(res, function(index, elm){
                 console.log(elm);
-                html += '<h4>Course Name: '+ elm[0] +', Credit: '+ elm[1] +',Credit: '+elm[2] + ',Grade: '+elm[3] + ' </h4>'
+                html += '<div class="container">' +
+                            '<div class="table-responsive">' +
+                                '<table class="table">' +
+                                    '<thead>' +
+                                        '<tr>' +
+                                            '<th>#</th>' +
+                                            '<th>Course Name</th>' +
+                                            '<th>Description</th>' +
+                                            '<th>Credit</th>' +
+                                            '<th>Achieved Grade</th>' +
+                                        '</tr>' +
+                                    '</thead>' +
+                                    '<tbody>' +
+                                        '<tr>' +
+                                            '<td>elm[0]</td>' +
+                                            '<td>elm[1]</td>' +
+                                            '<td>elm[2]</td>' +
+                                            '<td>elm[3]</td>' +
+                                        '</tr>' +
+                                    '</tbody>' +
+                                    '</table>' +
+                            '</div>' +
+                        '</div>'
             });
             $('#result-div').html(html);
         }).error(function(err){
@@ -20,7 +42,7 @@ $(document).ready(function () {
     });
 
     dataConfirmModal.setDefaults({
-        title: 'Are your sure you want to delete this course?',
+        title: 'You are about to delete this course.',
         commit: 'Yes',
         cancel: 'No'
     });

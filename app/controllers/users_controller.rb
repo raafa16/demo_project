@@ -36,6 +36,7 @@ class UsersController < ApplicationController
      end
 
     @cgpa = @total_credit_earned/@total_credit
+    rescue ZeroDivisionError
     puts @cgpa
       current_user.update_attribute(:cgpa, @cgpa)
   end

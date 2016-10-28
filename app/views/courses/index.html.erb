@@ -7,7 +7,7 @@
 </div>
     <div class="container" >
       <div id="semester-select-div">
-      <%= select_tag :semester_id, options_for_select(@semesters.all.collect{|u| ["#{u.name}" "#{u.year}", u.id]}), {prompt: 'List Registered courses for:', id: 'semester-select'} %>
+      <%= select_tag :semester_id, options_for_select(@semesters.all.collect{|u| ["#{u.name}"" ""#{u.year}", u.id]}), {prompt: 'List Registered courses for:', id: 'semester-select'} %>
       </div>
       <div id="result-div">
         <h4>No semester selected</h4>
@@ -19,7 +19,7 @@
   <% if @current_semester.blank? == true %>
   <h2>No semester marked as active.</h2>
   <%else %>
-    <h2>Current Semester: <%=@current_semester.name %> <%= @current_semester.year  %></h2>
+    <h2>Current Semester: <%=@current_semester.name%> <%=@current_semester.year%></h2>
   <% end %>
   <%= form_tag({:action => 'register'}) do %>
 <table class="table table-hover">

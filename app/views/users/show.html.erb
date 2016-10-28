@@ -34,7 +34,8 @@
               <% end %>
           </table>
 
-          <h1>CGPA = <%= current_user.cgpa %></h1>
+          <%= cgpa = current_user.cgpa %>
+            <h1>CGPA = <%= cgpa.present? ? cgpa : '0' %></h1>
         </div>
       </div>
 
