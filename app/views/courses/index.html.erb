@@ -55,9 +55,11 @@
             <%= link_to 'Create New Course', new_course_path, class: 'btn btn-default pull-right' %>
           </div>
     <% else %>
-      <div class="col-md-12 text-center">
-        <%= submit_tag "Register Courses" , class:'btn btn-default pull-right'%>
-      </div>
+      <% if @current_semester_courses.present? %>
+            <div class="col-md-12 text-center">
+              <%= submit_tag "Register Courses" , class:'btn btn-default pull-right'%>
+            </div>
+      <%end%>
    <% end %>
 
   </tbody>

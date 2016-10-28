@@ -4,52 +4,29 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    #if current_user.admin?
-
       @courses = Course.all
       @current_semester = Semester.find_by_active(1)
       if @courses.present?
-      @current_semester_courses = @current_semester.courses
+        @current_semester_courses = @current_semester.courses
       end
       @check_user = current_user.admin
       @semesters = Semester.all
-
-    #end
   end
 
   def register
-    #@selected_courses = params[:courses][:course_ids]||=[]
-    #puts @selected_courses
-
-    #course = params[:courses]
-    #@selected_courses = course[:course_id]
     @selected_courses = params[:course_ids]
     @registered_courses = Course.find(params[:course_ids])
     @current_semester = Semester.find_by_active(1)
-    puts @registered_courses
-    #puts @selected_courses
-    @selected_courses.each do |c|
-      puts '::::::::::::::::::::'
-      puts c
-       #s = Course.find(c)
-      #puts s.inspect
-
-    end
     @selected_courses.each do |course|
       if current_user.courses.exists? (course)
-
       else
-        #current_user.courses << Course.find(course)
         User.update(current_user.id, semester_id: @current_semester.id)
         current_user.courses_users.create(:semester_id => @current_semester.id, :course_id => Course.find(course).id, :user_id => current_user.id)
       end
-
-      #current_user.save!
-
-
     end
     redirect_to confirmed_registration_courses_path
   end
+
   def confirmed_registration
     @current_semester = Semester.find_by_active(1)
     if @current_semester.present?
@@ -59,30 +36,20 @@ class CoursesController < ApplicationController
 
   def publish_grade
     if current_user.admin
-      #@registered_courses = Course.find(params[:course_ids])
       @current_semester = Semester.find_by_active(1)
       @check_user = current_user.admin
       if @current_semester.present?
-      @user_from_current_semesters = User.where(semester_id: @current_semester.id)
-        end
-      #puts @user_from_current_semesters
+        @user_from_current_semesters = User.where(semester_id: @current_semester.id)
+      end
     end
-
   end
 
   def drop
     @course = params[:course_id]
     if current_user.courses.find(@course)
-     current_user.courses.delete(@course)
-     end
+      current_user.courses.delete(@course)
+    end
     redirect_to confirmed_registration_courses_path
-=begin
-    user.courses
-    puts current_user.courses
-    respond_to do |format|
-      format.html { redirect_to confirmed_registration_courses_path, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
-=end
   end
 
   def search
@@ -98,7 +65,6 @@ class CoursesController < ApplicationController
       @grades[course.id].push course.credit
       @grades[course.id].push @grade
     end
-
     render json: @grades
   end
 
