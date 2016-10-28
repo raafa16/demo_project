@@ -8,7 +8,9 @@ class CoursesController < ApplicationController
 
       @courses = Course.all
       @current_semester = Semester.find_by_active(1)
+      if @courses.present?
       @current_semester_courses = @current_semester.courses
+      end
       @check_user = current_user.admin
       @semesters = Semester.all
 
@@ -50,17 +52,20 @@ class CoursesController < ApplicationController
   end
   def confirmed_registration
     @current_semester = Semester.find_by_active(1)
-    @courses = current_user.courses.where('courses_users.semester_id = ?', @current_semester.id)
+    if @current_semester.present?
+      @courses = current_user.courses.where('courses_users.semester_id = ?', @current_semester.id)
+    end
   end
 
   def publish_grade
     if current_user.admin
       #@registered_courses = Course.find(params[:course_ids])
       @current_semester = Semester.find_by_active(1)
-      puts @current_semester.name
       @check_user = current_user.admin
+      if @current_semester.present?
       @user_from_current_semesters = User.where(semester_id: @current_semester.id)
-      puts @user_from_current_semesters
+        end
+      #puts @user_from_current_semesters
     end
 
   end

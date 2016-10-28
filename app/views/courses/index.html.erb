@@ -17,37 +17,39 @@
 
 <div class="container">
   <% if @current_semester.blank? == true %>
-  <h2>No semester marked as active.</h2>
+  <h2 class="text-center">Today is <%=Date.today%>. Advising has not started yet.</h2>
   <%else %>
     <h2>Current Semester: <%=@current_semester.name%> <%=@current_semester.year%></h2>
   <% end %>
   <%= form_tag({:action => 'register'}) do %>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Credit</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <% if @current_semester_courses.present? %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Credit</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
+      <tbody>
 
     <% @current_semester_courses.each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.description %></td>
-        <td><%= course.credit %></td>
-        <% if @check_user == true %>
-          <td><%= link_to 'Show', course, class:'btn btn-default' %></td>
-          <td><%= link_to 'Edit', edit_course_path(course), class:'btn btn-default' %></td>
-          <td><%= link_to 'Delete', course, class:'btn btn-default', method: :delete, data: { confirm: 'Are you sure?', commit: 'Yes' } %></td>
-        <% else %>
-          <td><%= check_box_tag 'course_ids[]', course.id %></td>
-        <% end  %>
-      </tr>
-    <% end %>
+          <tr>
+            <td><%= course.name %></td>
+            <td><%= course.description %></td>
+            <td><%= course.credit %></td>
+            <% if @check_user == true %>
+              <td><%= link_to 'Show', course, class:'btn btn-default' %></td>
+              <td><%= link_to 'Edit', edit_course_path(course), class:'btn btn-default' %></td>
+              <td><%= link_to 'Delete', course, class:'btn btn-default', method: :delete, data: { confirm: 'Are you sure?', commit: 'Yes' } %></td>
+            <% else %>
+              <td><%= check_box_tag 'course_ids[]', course.id %></td>
+            <% end  %>
+          </tr>
+        <% end %>
+      <%end %>
     <% if @check_user== true %>
           <div class="col-md-12 text-center">
             <%= link_to 'Create New Course', new_course_path, class: 'btn btn-default pull-right' %>
@@ -57,7 +59,6 @@
         <%= submit_tag "Register Courses" , class:'btn btn-default pull-right'%>
       </div>
    <% end %>
-
 
   </tbody>
 </table>

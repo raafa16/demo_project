@@ -7,8 +7,7 @@
     </div>
   </div>
 
-
-
+  <% if @courses.present? %>
   <div class="container">
     <table class="table table-hover">
       <thead>
@@ -53,6 +52,10 @@
       </tbody>
     </table>
   </div>
+
+  <%else%>
+    <h2 class="text-center">No courses registered.</h2>
+  <%end%>
   <br>
   </div>
 </div>

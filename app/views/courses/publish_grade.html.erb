@@ -9,11 +9,12 @@
 
   <div class="container">
     <% if @current_semester.blank? == true %>
-        <h2>No semester marked as active.</h2>
+        <h2 class="text-center">No semester marked as active.</h2>
     <%else %>
         <h2>Current Semester: <%=@current_semester.name %> <%= @current_semester.year  %></h2>
     <% end %>
     <%= form_tag({:action => 'confirmed_grade_submission'}) do %>
+        <% if @user_from_current_semesters.present? %>
         <table class="table table-hover">
           <thead>
           <tr>
@@ -49,6 +50,7 @@
                 <%= submit_tag "Publish Grade" , class:'btn btn-default pull-right'%>
               </div>
           <% end %>
+          <%end%>
 
           </tbody>
         </table>
