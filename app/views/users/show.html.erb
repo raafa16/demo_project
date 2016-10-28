@@ -1,28 +1,28 @@
 <div class="container">
     <div class="jumbotron">
-      <h1>User Profile</h1>
+      <h1 class="text-center">User Profile</h1>
     </div>
 
 <div class="container">
       <div class="row profile">
-        <div class="col-sm-4 col-md-3">
-          <%= image_tag(current_user.avatar.url(:small), class: 'avatar') %>
+        <div class="col-sm-4 col-md-4">
+          <%= image_tag(current_user.avatar.url(:medium), class: 'avatar') %>
           <h1><%= current_user.first_name %></h1>
           <ul>
-            <%= content_tag(:li, ("First Name: " + current_user.first_name)) unless current_user.first_name.blank? %>
-            <%= content_tag(:li, ("Last Name: " + current_user.last_name)) unless current_user.last_name.blank? %>
-            <%= content_tag(:li, ("Email: " + current_user.email)) unless current_user.email.blank? %>
+            <%= content_tag(:li, ('First Name : ' + current_user.first_name)) unless current_user.first_name.blank? %>
+            <%= content_tag(:li, ('Last Name :' + current_user.last_name)) unless current_user.last_name.blank? %>
+            <%= content_tag(:li, ('Email :' + current_user.email)) unless current_user.email.blank? %>
           </ul>
         </div>
-        <div class="feed">
-          <table class="table table-hover">
-            <h3>Course List</h3>
-            <tr>
-              <th> Course Name</th>
-              <th> Description</th>
-              <th> Credit</th>
-              <th> Grade</th>
-            </tr>
+        <div class="col-sm-7">
+            <table class="table table-hover">
+              <h3 class="text-center">Academic Record</h3>
+              <tr>
+                <th> Course Name</th>
+                <th> Description</th>
+                <th> Credit</th>
+                <th> Grade</th>
+              </tr>
               <% @courses.each do |course| %>
                   <tr>
                     <td><%= course.name %></td>
@@ -32,14 +32,15 @@
                     <td><%= a.present? ? a : 'N/A' %></td>
                   </tr>
               <% end %>
-          </table>
+            </table>
 
-          <%= cgpa = current_user.cgpa %>
-            <h1>CGPA = <%= cgpa.present? ? cgpa : '0' %></h1>
+            <%= cgpa = current_user.cgpa %>
+            <h1>CGPA = <%= cgpa.present? ? cgpa : '0.0' %></h1>
         </div>
       </div>
 
-</div>
+
+  </div>
 </div>
 
 
