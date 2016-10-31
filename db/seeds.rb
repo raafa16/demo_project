@@ -8,4 +8,3 @@
 
   Semester.delete_all
   Semester.create(name: 'Fall', year: '2016', active: 'true')
-
