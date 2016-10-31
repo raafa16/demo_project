@@ -6,12 +6,12 @@
 <div class="container">
       <div class="row profile">
         <div class="col-sm-4 col-md-4">
-          <%= image_tag(current_user.avatar.url(:medium), class: 'avatar') %>
+          <%= image_tag(current_user.avatar.url(:small), class: 'avatar') %>
           <h1><%= current_user.first_name %></h1>
           <ul>
-            <%= content_tag(:li, ('First Name : ' + current_user.first_name)) unless current_user.first_name.blank? %>
-            <%= content_tag(:li, ('Last Name :' + current_user.last_name)) unless current_user.last_name.blank? %>
-            <%= content_tag(:li, ('Email :' + current_user.email)) unless current_user.email.blank? %>
+            <%= content_tag(:li, ('First Name: ' + current_user.first_name)) unless current_user.first_name.blank? %>
+            <%= content_tag(:li, ('Last Name: ' + current_user.last_name)) unless current_user.last_name.blank? %>
+            <%= content_tag(:li, ('Email: ' + current_user.email)) unless current_user.email.blank? %>
           </ul>
         </div>
         <div class="col-sm-7">
@@ -34,7 +34,7 @@
               <% end %>
             </table>
 
-            <%= cgpa = current_user.cgpa %>
+            <% cgpa = current_user.cgpa %>
             <h1>CGPA = <%= cgpa.present? ? cgpa : '0.0' %></h1>
         </div>
       </div>

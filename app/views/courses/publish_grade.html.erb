@@ -33,7 +33,12 @@
                   <td class="text-center"><%= user.last_name %></td>
                   <td class="text-center"><%= user.email%></td>
                   <td class="text-center"><%= user.cgpa.present? ? user.cgpa : 'N/A'  %></td>
-                  <td> <%= link_to 'Publish', student_id_courses_path(:user_id => user.id) %></td>
+                  <% if user.published%>
+                      <td> <%= link_to 'Edit', student_id_courses_path(:user_id => user.id)  %></td>
+                      <td> <%= button_tag "Published", class: 'btn btn-success' %></td>
+                      <%else %>
+                      <td> <%= link_to 'Publish', student_id_courses_path(:user_id => user.id), class: 'btn btn-default' %></td>
+                      <%end%>
                 </tr>
             <% end  %>
           </tbody>

@@ -79,7 +79,7 @@ class CoursesController < ApplicationController
 
   def confirmed_grade_submission
     @info = params["grade"]
-
+    @current_semester = Semester.find_by_active(1)
     puts "Suppose to print user ids from hash:"
     @info.each do |k,v|
       v.each do |f,g|
@@ -94,6 +94,7 @@ class CoursesController < ApplicationController
                 q.each do |s,t|
                   puts "Grade: #{t}"
                   @user.courses_users.where('semester_id=? AND course_id=?',k,p ).update_all(:grade => t)
+                  User.where('semester_id=? AND id=?', @current_semester.id, @user.id).update_all(published: "1")
                 end
               end
             end
@@ -101,6 +102,56 @@ class CoursesController < ApplicationController
         end
       end
     end
+    #updating cgpa after publishing grade
+    @registered_courses = @user.courses_users.pluck(:course_id)
+    @enrolled_semesters = @user.courses_users.pluck(:semester_id)
+    @total_credit = 0
+    @total_credit_earned =0
+    @courses = Course.find(@registered_courses)
+    @semesters= Semester.find(@enrolled_semesters)
+
+    #puts @semesters.name
+    #@courses = Course.find(@course_ids)
+    #puts @courses
+    @courses.each do |course|
+      @grade = @user.courses_users.where('course_id=?', course.id).pluck(:grade)[0]
+      @credit = course.credit
+
+      if @grade === 'A'
+        @credit_earned = @credit.to_i*4
+        @total_credit = @total_credit + @credit
+      elsif @grade === 'B'
+        @credit_earned = @credit.to_i*3
+        @total_credit = @total_credit + @credit
+      elsif @grade === 'C'
+        @credit_earned = @credit.to_i*2
+        @total_credit = @total_credit + @credit
+      elsif @grade === 'D'
+        @credit_earned = @credit.to_i*1
+        @total_credit = @total_credit + @credit
+      elsif @grade === 'F'
+        @credit_earned = @credit.to_i*0
+        @total_credit = @total_credit + @credit
+      elsif @grade === "nil"
+        @credit_earned = 0
+      end
+      @total_credit_earned = @total_credit_earned.to_i + @credit_earned.to_i
+
+    end
+
+    if @user.cgpa.present?
+      @cgpa = @user.cgpa
+      @cgpa = (@cgpa + (@total_credit_earned/@total_credit))/2
+      puts @cgpa
+      @user.update_attribute(:cgpa, @cgpa)
+    else
+      @cgpa = @total_credit_earned/@total_credit
+      puts @cgpa
+      @user.update_attribute(:cgpa, @cgpa)
+    end
+
+
+
 
     redirect_to publish_grade_courses_url
 
