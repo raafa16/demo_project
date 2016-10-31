@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get :drop
       get :publish_grade
       post :search
+      get :student_id
     end
 
 

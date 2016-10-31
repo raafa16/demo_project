@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @total_credit_earned =0
     @courses = Course.find(@registered_courses)
     @semesters= Semester.find(@enrolled_semesters)
+    @cgpa = current_user.cgpa
     #puts @semesters.name
     #@courses = Course.find(@course_ids)
     #puts @courses
