@@ -28,9 +28,9 @@
                 <td><%= semester.name %></td>
                 <td><%= semester.year %></td>
                 <td><%= semester.active %></td>
-                <td><%= link_to 'Show', semester %></td>
-                <td><%= link_to 'Edit', edit_semester_path(semester) %></td>
-                <td><%= link_to 'Destroy', semester, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Show', semester, class: 'btn btn-default' %></td>
+                <td><%= link_to 'Edit', edit_semester_path(semester), class: 'btn btn-default' %></td>
+                <td><%= link_to 'Delete', semester, class:'btn btn-default', method: :delete, data: { confirm: 'Are you sure?', commit: 'Yes' } %></td>
               </tr>
           <% end %>
               <%end%>

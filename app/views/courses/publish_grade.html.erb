@@ -28,18 +28,23 @@
 
           <tbody>
           <% @user_from_current_semesters.each do |user| %>
-                <tr>
+              <% if user.published%>
+                <tr class="success">
                   <td class="text-center"><%= user.first_name %></td>
                   <td class="text-center"><%= user.last_name %></td>
                   <td class="text-center"><%= user.email%></td>
                   <td class="text-center"><%= user.cgpa.present? ? user.cgpa : 'N/A'  %></td>
-                  <% if user.published%>
-                      <td> <%= link_to 'Edit', student_id_courses_path(:user_id => user.id)  %></td>
-                      <td> <%= button_tag "Published", class: 'btn btn-success' %></td>
-                      <%else %>
-                      <td> <%= link_to 'Publish', student_id_courses_path(:user_id => user.id), class: 'btn btn-default' %></td>
-                      <%end%>
+                  <td class="text-center"> <%= link_to '  Edit  ', student_id_courses_path(:user_id => user.id), class: 'btn btn-default'  %></td>
                 </tr>
+              <%else %>
+                  <tr>
+                    <td class="text-center"><%= user.first_name %></td>
+                    <td class="text-center"><%= user.last_name %></td>
+                    <td class="text-center"><%= user.email%></td>
+                    <td class="text-center"><%= user.cgpa.present? ? user.cgpa : 'N/A'  %></td>
+                    <td class="text-center"> <%= link_to 'Publish', student_id_courses_path(:user_id => user.id), class: 'btn btn-default' %></td>
+                  </tr>
+              <%end%>
             <% end  %>
           </tbody>
         </table>

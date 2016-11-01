@@ -40,9 +40,9 @@
           <%end%>
 
           <% if current_page?( '/courses') %>
-              <li class="active"><%= link_to 'Course Registration', courses_url, :class => 'navbar-link' %></li>
+              <li class="active"><%= link_to 'Course Registration', courses_path, :class => 'navbar-link' %></li>
           <%else%>
-              <li><%= link_to 'Course Registration', courses_url, :class => 'navbar-link' %></li>
+              <li><%= link_to 'Course Registration', courses_path, :class => 'navbar-link' %></li>
           <%end%>
         <% if current_user.admin %>
             <% if current_page?( '/semesters') %>

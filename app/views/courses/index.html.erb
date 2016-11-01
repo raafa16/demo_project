@@ -1,10 +1,11 @@
 <div class="container">
 
-<div>
-  <div class="jumbotron">
-    <h1 class="text-center">Courses</h1>
-  </div>
-</div>
+    <div>
+      <div class="jumbotron">
+        <h1 class="text-center">Courses</h1>
+      </div>
+    </div>
+
     <div class="container" >
       <div id="semester-select-div">
       <%= select_tag :semester_id, options_for_select(@semesters.all.collect{|u| ["#{u.name}"" ""#{u.year}", u.id]}), {prompt: 'List Registered courses for:', id: 'semester-select'} %>
