@@ -27,7 +27,9 @@
           </thead>
 
           <tbody>
+
           <% @user_from_current_semesters.each do |user| %>
+
               <% if user.published%>
                 <tr class="success">
                   <td class="text-center"><%= user.first_name %></td>
@@ -46,8 +48,12 @@
                   </tr>
               <%end%>
             <% end  %>
+
           </tbody>
         </table>
+
+        <div class="text-capitalize"><%= will_paginate @user_from_current_semesters %></div>
+
     <% end %>
   </div>
 

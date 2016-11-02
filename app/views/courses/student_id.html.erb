@@ -17,6 +17,7 @@
         <% if @courses_taken_by_user.present? %>
             <% if @check_user== true %>
                 <div class="col-md-12 text-center">
+                  <h4>Student Name = <%= @user.first_name %></h4>
                   <%= submit_tag "Publish Grade" , class:'btn btn-default pull-right'%>
                 </div>
             <% end %>

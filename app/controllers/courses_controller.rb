@@ -22,6 +22,7 @@ class CoursesController < ApplicationController
       else
         User.update(current_user.id, semester_id: @current_semester.id)
         current_user.courses_users.create(:semester_id => @current_semester.id, :course_id => Course.find(course).id, :user_id => current_user.id)
+        User.update(current_user.id, published: "false")
       end
     end
     redirect_to confirmed_registration_courses_path
@@ -39,7 +40,7 @@ class CoursesController < ApplicationController
       @current_semester = Semester.find_by_active(1)
       @check_user = current_user.admin
       if @current_semester.present?
-        @user_from_current_semesters = User.where(semester_id: @current_semester.id)
+        @user_from_current_semesters = User.where(semester_id: @current_semester.id).paginate(:page => params[:page], :per_page => 2)
       end
     end
   end
@@ -139,7 +140,7 @@ class CoursesController < ApplicationController
 
     end
 
-    if @user.cgpa.present?
+    if @user.cgpa.present? && @user.published
       @cgpa = @user.cgpa
       @cgpa = (@cgpa + (@total_credit_earned/@total_credit))/2
       puts @cgpa

@@ -67,3 +67,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'data-confirm-modal'
+
+gem 'will_paginate'
