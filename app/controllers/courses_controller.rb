@@ -152,8 +152,13 @@ class CoursesController < ApplicationController
     end
 
 
-
-
+    #flash[:success] = "Result has been published!"
+    @result_hash = {}
+    @courses.each do |course|
+      @grade = @user.courses_users.where('course_id=?', course.id).pluck(:grade)[0]
+      @result_hash[course.name] = @grade
+      end
+    ResultMailer.result_publish(@user, @info, @current_semester, @result_hash).deliver
     redirect_to publish_grade_courses_url
 
   end
