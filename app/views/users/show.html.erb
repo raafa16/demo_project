@@ -28,14 +28,13 @@
                     <td><%= course.name %></td>
                     <td><%= course.description %></td>
                     <td><%= course.credit %></td>
-                    <% a = current_user.courses_users.where('course_id=?', course.id).pluck(:grade)[0] %>
-                    <td><%= a.present? ? a : 'N/A' %></td>
+                    <td><%= @grades[course.id].present? ? @grades[course.id]: 'N/A' %></td>
                   </tr>
               <% end %>
             </table>
 
-            <% cgpa = current_user.cgpa %>
-            <h1>CGPA = <%= cgpa.present? ? cgpa : '0.0' %></h1>
+
+            <h1>CGPA = <%= @cgpa.present? ? @cgpa : '0.0' %></h1>
         </div>
       </div>
 

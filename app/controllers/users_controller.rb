@@ -8,6 +8,12 @@ class UsersController < ApplicationController
     @semesters= Semester.find(@enrolled_semesters)
     @cgpa = current_user.cgpa
 
+    @grades = Hash.new()
+
+    @courses.each do |course|
+      @grades[course.id] = current_user.courses_users.where('course_id=?', course.id).pluck(:grade)[0]
+    end
+
     end
 
 end
