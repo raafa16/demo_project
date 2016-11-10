@@ -46,7 +46,9 @@
               <td><%= link_to 'Edit', edit_course_path(course), class:'btn btn-default' %></td>
               <td><%= link_to 'Delete', course, class:'btn btn-default', method: :delete, data: { confirm: 'Are you sure?', commit: 'Yes' } %></td>
             <% else %>
-              <td><%= check_box_tag 'course_ids[]', course.id %></td>
+               <td><%= check_box_tag 'course_ids[]', course.id,  checked = check_if_user_registered_this_course(current_user, course.id, @current_semester.id) %></td>
+               <td><%#= check_box_tag 'course_ids[]', course.id,false %></td>
+                <td><%#= check_box_tag 'course_ids[]', course.id, checked: current_user.courses_users.exists?(:user_id=> current_user.id, :course_id=> @course_id, :semester_id=>@semester_id) ? 'true' : 'false' %></td>
             <% end  %>
           </tr>
         <% end %>
