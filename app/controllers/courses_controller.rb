@@ -40,7 +40,7 @@ class CoursesController < ApplicationController
       @current_semester = Semester.find_by_active(1)
       @check_user = current_user.admin
       if @current_semester.present?
-        @user_from_current_semesters = User.where(semester_id: @current_semester.id).paginate(:page => params[:page], :per_page => 2)
+        @user_from_current_semesters = User.where(semester_id: @current_semester.id).paginate(:page => params[:page], :per_page => 5)
       end
     end
   end

@@ -49,7 +49,7 @@
                   <td><%= link_to 'Delete', course, class:'btn btn-default', method: :delete, data: { confirm: 'Are you sure?', commit: 'Yes' } %></td>
                 <% else %>
                     <% if check_if_user_registered_this_course(current_user, course.id, @current_semester.id) == true %>
-                   <td><%= check_box_tag 'course_ids[]', course.id,  checked = true %></td>
+                        <td><%= check_box_tag 'course_ids[]', course.id,  checked = true %></td>
                         <td>Registered</td>
                         <%else%>
                         <td><%= check_box_tag 'course_ids[]', course.id %></td>
