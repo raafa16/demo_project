@@ -16,3 +16,11 @@
 //= require bootstrap-sprockets
 //= require data-confirm-modal
 //= require_tree .
+
+$(window).scroll(function() {
+    if ($(document).scrollTop() > 10) {
+        $('nav').addClass('shrink');
+    } else {
+        $('nav').removeClass('shrink');
+    }
+});
