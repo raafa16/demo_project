@@ -24,3 +24,4 @@ $(window).scroll(function() {
         $('nav').removeClass('shrink');
     }
 });
+$('.carousel').carousel();

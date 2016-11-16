@@ -1,5 +1,25 @@
 <div class="container">
-  <div class="col-sm-4 col-md-5">
+
+
+  <div class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+      </div>
+      <div class="item">
+      </div>
+      <div class="item">
+      </div>
+    </div>
+  </div>
+
+
+  <!--<div class="col-sm-4 col-md-5">-->
+  <br>
+  <br>
+  <br>
+
   <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -29,10 +49,5 @@
 
 
   <%= render "devise/shared/links" %>
+
 </div>
-  <div class="col-sm-7">
-    <div class="container-fluid">
-      <%= image_tag("course_registration.jpg", class: "img-responsive", alt: "course_registration_image")%>
-    </div>
-  </div>
-  </div>
