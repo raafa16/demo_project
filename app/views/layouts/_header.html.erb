@@ -1,0 +1,120 @@
+<head>
+  <title>CourseReg</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+
+  <style>
+    body {
+      padding-top: 80px;
+    }
+    nav .navbar-brand {
+      font-size: 30px;
+    }
+    nav .navbar-toggle {
+      margin: 13px 15px 13px 0;
+    }
+    nav a {
+      font-size: 18px;
+      padding-bottom: 20px !important;
+      padding-top: 20px !important;
+      -webkit-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+    }
+    nav.navbar.shrink {
+      min-height: 35px;
+    }
+    nav.navbar.shrink .navbar-brand {
+      font-size: 25px;
+    }
+    nav.navbar.shrink a {
+      font-size: 15px;
+      padding-bottom: 10px !important;
+      padding-top: 10px !important;
+    }
+    nav.navbar.shrink .navbar-toggle {
+      margin: 8px 15px 8px 0;
+      padding: 4px 5px;
+    }
+  </style>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class=" navbar-brand" href='/courses'>CourseReg</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <% if user_signed_in? %>
+            <ul class="nav navbar-nav">
+
+              <% if current_page?('/users/show') %>
+                  <li class="active"><%= link_to 'My profile', users_show_path, :class => 'navbar-link' %></li>
+              <%else%>
+                  <li><%= link_to 'My profile', users_show_path, :class => 'navbar-link' %></li>
+              <%end%>
+              <% if current_page?('/edit') %>
+                  <li class="active"><%= link_to 'Edit Profile', edit_user_registration_url, :class => 'navbar-link' %> </li>
+              <%else%>
+                  <li><%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
+              <%end%>
+              <% if current_page?('/courses/confirmed_registration') %>
+                  <li class="active"><%= link_to 'Registered Courses', confirmed_registration_courses_path, :class => 'navbar-link' %></li>
+              <%else%>
+                  <li><%= link_to 'Registered Courses', confirmed_registration_courses_path, :class => 'navbar-link' %></li>
+              <%end%>
+
+              <% if current_page?( '/courses') %>
+                  <li class="active"><%= link_to 'Course Registration', courses_path, :class => 'navbar-link' %></li>
+              <%else%>
+                  <li><%= link_to 'Course Registration', courses_path, :class => 'navbar-link' %></li>
+              <%end%>
+              <% if current_user.admin %>
+                  <% if current_page?( '/semesters') %>
+                      <li class="active"><%= link_to 'Semester', semesters_url, :class => 'navbar-link' %></li>
+                  <%else%>
+                      <li><%= link_to 'Semester', semesters_url, :class => 'navbar-link' %></li>
+                  <%end%>
+                  <% if current_page?( '/courses/publish_grade') %>
+                      <li class="active"><%= link_to 'Publish Grade',  publish_grade_courses_url, :class => 'navbar-link' %></li>
+                  <%else%>
+                      <li><%= link_to 'Publish Grade',  publish_grade_courses_url, :class => 'navbar-link' %></li>
+                  <%end%>
+              <%end%>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, :class => 'navbar-link' do %>
+                    Hi <strong><%= current_user.first_name %></strong>! <i class="glyphicon glyphicon-log-out">Logout</i>
+                <%end%>
+              </li>
+            </ul>
+        <%else%>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to new_user_registration_path, :class => 'navbar-link'  do %>
+                    <i class="glyphicon glyphicon-user"> Signup</i>
+                <%end%>
+              </li>
+              <li><%= link_to new_user_session_path, :class => 'navbar-link'  do %>
+                    <i class="glyphicon glyphicon-log-in"> Login</i>
+                <%end%>
+              </li>
+            </ul>
+        <%end%>
+      </div>
+    </div>
+  </nav>
+
+  <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+</head>
