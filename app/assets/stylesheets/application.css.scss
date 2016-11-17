@@ -47,80 +47,32 @@
     padding: 4px 5px;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+body{
+  padding-top: 61px;
 }
-.carousel-fade .carousel-inner .item {
-  opacity: 0;
-  transition-property: opacity;
-}
-.carousel-fade .carousel-inner .active {
-  opacity: 1;
-}
-.carousel-fade .carousel-inner .active.left,
-.carousel-fade .carousel-inner .active.right {
-  left: 0;
-  opacity: 0;
-  z-index: 1;
-}
-.carousel-fade .carousel-inner .next.left,
-.carousel-fade .carousel-inner .prev.right {
-  opacity: 1;
-}
-.carousel-fade .carousel-control {
-  z-index: 2;
-}
-@media all and (transform-3d),
-(-webkit-transform-3d) {
-  .carousel-fade .carousel-inner > .item.next,
-  .carousel-fade .carousel-inner > .item.active.right {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  .carousel-fade .carousel-inner > .item.prev,
-  .carousel-fade .carousel-inner > .item.active.left {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  .carousel-fade .carousel-inner > .item.next.left,
-  .carousel-fade .carousel-inner > .item.prev.right,
-  .carousel-fade .carousel-inner > .item.active {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-.item:nth-child(1) {
-  background: url(http://gcpcentral.com/wp-content/uploads/2016/06/687474703a2f2f7777772e6e6174696f6e616c77696c6c736166652e636f2e756b2f77702d636f6e74656e742f75706c6f6164732f323031352f30332f52656769737465722e6a7067-e1467282802999-1600x767.jpeg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.item:nth-child(2) {
-  background: url(https://www.kth.se/blogs/satu/files/2016/10/1.jpeg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.item:nth-child(3) {
-  background: url(http://i.huffpost.com/gen/1830708/images/o-COLLEGE-GRADUATION-facebook.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.carousel {
-  z-index: -99;
-}
-.carousel .item {
+
+.footer {
   position: fixed;
-  width: 100%;
-  height: 100%;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+  opacity: 0.5;
 }
 
+.background{
 
+  background-image: url('course1.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.alert{
+  margin-bottom: 0px!important;
+}

@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
-
-  <%= render "layouts/header" %>
+  <head>
+    <title>CourseReg</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
 
   <body>
+    <%= render "layouts/header" %>
 
-  <%= yield %>
+    <% if notice %>
+        <div class="alert alert-success alert-dismissable fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success! </strong><%= notice %>
+        </div>
+    <% end %>
+    <% if alert %>
+        <div class="alert alert-danger alert-dismissable fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Uh oh! </strong><%= alert %>
+        </div>
+    <% end %>
+      <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
-
-
-
-  <%= render "layouts/footer" %>
-
 </html>

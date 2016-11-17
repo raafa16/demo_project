@@ -1,28 +1,11 @@
+<div class="background">
+
+
 <div class="container">
 
-
-  <div class="carousel slide carousel-fade" data-ride="carousel">
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-      </div>
-      <div class="item">
-      </div>
-      <div class="item">
-      </div>
-    </div>
-  </div>
-
-
   <!--<div class="col-sm-4 col-md-5">-->
-  <br>
-  <br>
-  <br>
-
   <h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -50,4 +33,5 @@
 
   <%= render "devise/shared/links" %>
 
+</div>
 </div>
