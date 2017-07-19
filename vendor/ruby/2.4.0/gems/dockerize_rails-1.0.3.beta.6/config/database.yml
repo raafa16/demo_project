@@ -1,0 +1,28 @@
+default: &default
+  adapter: mysql2
+  host: localhost
+  encoding: utf8
+
+development:
+  <<: *default
+  username: root
+  password: root
+  database: dockerize_rails_development
+
+test:
+  <<: *default
+  username: root
+  password: root
+  database: dockerize_rails_test
+
+staging:
+  <<: *default
+  username: root
+  password: root
+  database: dockerize_rails_staging
+
+production:
+  <<: *default
+  username: root
+  password: root
+  database: dockerize_rails_production

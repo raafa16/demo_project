@@ -1,0 +1,19 @@
+current directory: /home/nascenia/Desktop/demo_project/vendor/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+/home/nascenia/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20161121-32619-1u6lqbh.rb extconf.rb
+creating Makefile
+
+current directory: /home/nascenia/Desktop/demo_project/vendor/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/nascenia/Desktop/demo_project/vendor/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling byebug.c
+compiling locker.c
+compiling threads.c
+compiling context.c
+compiling breakpoint.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/nascenia/Desktop/demo_project/vendor/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20161121-32619-j4kt10/byebug

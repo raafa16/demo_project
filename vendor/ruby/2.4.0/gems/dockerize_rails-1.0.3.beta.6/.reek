@@ -1,0 +1,24 @@
+exclude_paths:
+  - vendor
+  - spec
+  - bin
+  - doc
+  - pkg
+
+TooManyConstants:
+  enabled: false
+
+TooManyStatements:
+  max_statements: 15
+
+IrresponsibleModule:
+  enabled: false
+
+TooManyInstanceVariables:
+  enabled: false
+
+DuplicateMethodCall:
+  enabled: false
+
+InstanceVariableAssumption:
+  enabled: false

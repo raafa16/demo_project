@@ -1,0 +1,9 @@
+<% databases.keys.each do |db| %>
+CREATE DATABASE IF NOT EXISTS <%= ConfigLoader.app_config[db]['database'] %>;
+<% end %>
+
+<% databases.keys.each do |db| %>
+GRANT ALL PRIVILEGES ON <%= ConfigLoader.app_config[db]['database'] %>.* TO '<%= database_user_name %>'@'%' WITH GRANT OPTION;
+<% end %>
+SHOW DATABASES ;
+

@@ -1,0 +1,25 @@
+.idea/*
+.bundle
+test
+vendor/bundle
+vendor/ruby
+log/*
+tmp/*
+!/log/.keep
+!/tmp/.keep
+.byebug_history
+config/database.yml
+.ruby-gemset
+.ruby-version
+public/uploads
+public/assets
+
+<%= Constants::DOCKERIZE_RAILS_CONFIG_FILE_NAME %>
+<%= Constants::DOCKER_COMPOSE_FILE_NAME %>
+<%= Constants::DOCKERIGNORE_FILE_NAME %>
+<%= Constants::SHELL_SCRIPT_FILE_NAME %>
+<% if DRConfig.linked_database? %>
+<% if databases.values.include?('mysql') || databases.values.include?('postgresql') %>
+<%= "#{Constants::CONFIG_DIRECTORY_NAME}/#{databases[application_env]}/#{Constants::DATA_DIRECTORY_NAME}/*" %>
+<% end %>
+<% end %>
