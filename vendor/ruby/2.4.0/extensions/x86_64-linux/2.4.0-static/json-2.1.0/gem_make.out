@@ -1,0 +1,13 @@
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/json-2.1.0/ext/json
+/home/nascenia/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20180119-3328-5f8rpz.rb extconf.rb
+creating Makefile
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" install

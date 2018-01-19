@@ -1,0 +1,15 @@
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+/home/nascenia/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20180119-3328-ur1arz.rb extconf.rb
+creating Makefile
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.so
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20180119-3328-3elexw/bindex

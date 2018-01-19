@@ -1,0 +1,27 @@
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/unf_ext-0.0.7.4/ext/unf_ext
+/home/nascenia/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20180119-3328-1xh5qw0.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/extensions/x86_64-linux/2.4.0-static/unf_ext-0.0.7.4/mkmf.log
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/unf_ext-0.0.7.4/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/unf_ext-0.0.7.4/ext/unf_ext
+make "DESTDIR="
+compiling unf.cc
+cc1plus: warning: command line option ‘-Wimplicit-int’ is valid for C/ObjC but not for C++
+cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++
+cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++
+cc1plus: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1plus: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1plus: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+cc1plus: warning: unrecognized command line option ‘-Wno-tautological-compare’
+linking shared-object unf_ext.so
+
+current directory: /home/nascenia/Desktop/work_stuff/demo_project/vendor/ruby/2.4.0/gems/unf_ext-0.0.7.4/ext/unf_ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20180119-3328-1rj4qq5
